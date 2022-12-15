@@ -4,10 +4,9 @@ import { PATHS } from "../routes/paths";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import axios from "axios";
 
 const LoginPage = () => {
-  console.log("login");
-
   const schema = yup
     .object({
       email: yup
@@ -27,7 +26,11 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => console.log(data, errors);
+  const onSubmit = (data) => {
+    axios
+      .post("http://localhost:5000/login", data)
+      .then((res) => console.log(res));
+  };
 
   return (
     <div className="w-screen h-screen flex">

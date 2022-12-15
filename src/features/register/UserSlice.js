@@ -11,8 +11,7 @@ const initialState = {
 export const getPosts = createAsyncThunk("posts/getPosts", async (thunkAPI) => {
   try {
     const res = await axios.get(url);
-    // return res.data;
-    console.log(res);
+    return res.data;
   } catch (err) {
     return thunkAPI.rejectWithValue({ error: err.message });
   }
@@ -40,7 +39,7 @@ const postSlice = createSlice({
   name: "posts",
   // initialState: initialState[ES6 destructuring syntax]
   initialState,
-  // Add reducers for the synchronous actions on the UI[we are not using this property for this tutorial]
+
   reducers: {},
   // Add extraReducers for the asynchronous actions on the UI
   extraReducers: {
@@ -69,5 +68,5 @@ const postSlice = createSlice({
   },
 });
 
-// Export the reducer logic from the slice
+// Export the reducer
 export default postsSlice.reducer;
