@@ -11,7 +11,8 @@ const initialState = {
 export const getPosts = createAsyncThunk("posts/getPosts", async (thunkAPI) => {
   try {
     const res = await axios.get(url);
-    return res.data;
+    // return res.data;
+    console.log(res);
   } catch (err) {
     return thunkAPI.rejectWithValue({ error: err.message });
   }

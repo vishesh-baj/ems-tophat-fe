@@ -1,8 +1,10 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { LoginPage, RegisterPage } from "./pages";
 import routes from "./routes/routes";
 const App = () => {
+  console.log("hi");
   return (
     <div className="font-montserrat">
       <Routes>
