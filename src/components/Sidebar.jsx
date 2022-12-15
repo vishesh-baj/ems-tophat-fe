@@ -19,7 +19,7 @@ const Sidebar = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu  w-20 bg-primary text-base-content flex flex-col items-center justify-center gap-1">
+        <ul className="menu w-20 z-[10000]  md:w-auto px-1 bg-primary text-base-content flex flex-col items-center justify-center gap-1">
           {/* <!-- Sidebar content here --> */}
           <li>
             <NavLink
@@ -31,7 +31,8 @@ const Sidebar = () => {
           </li>
           <li>
             <NavLink
-              className="btn btn-ghost rounded-lg gap-2"
+              className="btn btn-ghost rounded-lg gap-2 tooltip tooltip-right"
+              data-tip="employee dashboard"
               to={PATHS.dashboardPage}
             >
               <BsFillPersonFill className="text-secondary" size={25} />
