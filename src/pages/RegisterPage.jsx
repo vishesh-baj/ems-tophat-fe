@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { PATHS } from "../routes/paths";
+import { useState } from "react";
+
 const RegisterPage = () => {
   return (
     <>
