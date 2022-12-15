@@ -74,7 +74,9 @@ const LoginPage = () => {
               <NavLink to="/">forget password</NavLink>
             </span>
           </div>
-          <input type="submit" className="btn btn-secondary w-1/2" />
+          <button type="submit" className="btn btn-secondary w-1/2">
+            Login
+          </button>
         </form>
       </div>
     </div>

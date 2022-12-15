@@ -96,7 +96,7 @@ const RegisterPage = () => {
               </span>
             </div>
             <button type="submit" className="btn btn-secondary w-1/2">
-              Login
+              Register
             </button>
           </form>
         </div>

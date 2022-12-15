@@ -17,7 +17,7 @@ module.exports = {
     // },
   },
   daisyui: {
-    themes: ["cyberpunk"],
+    themes: ["dark"],
   },
   plugins: [require("daisyui")],
 };
