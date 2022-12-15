@@ -1,9 +1,37 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
+import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { PATHS } from "../routes/paths";
-import { useState } from "react";
+import * as yup from "yup";
 
 const RegisterPage = () => {
+  const schema = yup.object({
+    userName: yup
+      .string()
+      .min(3, "username nust be atleast 3 characters")
+      .required("username is required"),
+    email: yup
+      .string()
+      .email("enter valid email")
+      .required("email is required"),
+    password: yup
+      .string()
+      .min(6, "password must be atleast 6 characters")
+      .required("password is required"),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
+  });
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const onSubmit = (data) => console.log(data);
+
   return (
     <>
       <div className="w-screen h-screen flex">
@@ -22,28 +50,43 @@ const RegisterPage = () => {
               Software
             </h1>
           </div>
-          <div className="flex flex-col w-full gap-2">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col w-full gap-2"
+          >
             <h1 className="text-4xl font-extrabold">Register</h1>
             <input
+              {...register("userName")}
+              name="userName"
               type="text"
               placeholder="Username"
               className="input input-bordered mb-2"
             />
+            <p className="text-red-600">{errors.userName?.message}</p>
             <input
+              {...register("email")}
+              name="email"
               type="text"
               placeholder="Email"
               className="input input-bordered mb-2"
             />
+            <p className="text-red-600">{errors.email?.message}</p>
             <input
-              type="text"
+              {...register("password")}
+              name="password"
+              type="password"
               placeholder="Password"
               className="input input-bordered mb-2"
             />
+            <p className="text-red-600">{errors.password?.message}</p>
             <input
-              type="text"
+              {...register("confirmPassword")}
+              name="confirmPassword"
+              type="password"
               placeholder="Confirm Password"
               className="input input-bordered mb-2"
             />
+            <p className="text-red-600">{errors.confirmPassword?.message}</p>
             <div className="flex justify-between cursor-pointer px-2">
               <span className="text-sm md:text-neutral">
                 <NavLink to={PATHS.loginPage}>already have an account?</NavLink>
@@ -52,8 +95,10 @@ const RegisterPage = () => {
                 <NavLink to="/">forget password</NavLink>
               </span>
             </div>
-            <button className="btn btn-secondary w-1/2">Login</button>
-          </div>
+            <button type="submit" className="btn btn-secondary w-1/2">
+              Login
+            </button>
+          </form>
         </div>
       </div>
     </>
