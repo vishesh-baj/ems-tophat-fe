@@ -15,8 +15,8 @@ const App = () => {
     <div className="font-montserrat">
       <Routes>
         <Route element={<PrivateRoute />}>
-          <Route element={<DashboardHomePage />} path="/dashboard" />
           <Route element={<EmployeesPage />} path="/dashboard/employees" />
+          <Route element={<DashboardHomePage />} path="/dashboard/home" />
           <Route element={<CandidatesPage />} path="/dashboard/candidates" />
         </Route>
         <Route element={<ReverseAuthRoute />}>
