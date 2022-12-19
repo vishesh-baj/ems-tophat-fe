@@ -10,12 +10,7 @@ import {
 } from "./pages";
 import PrivateRoute from "./routes/PrivateRoute";
 import ReverseAuthRoute from "./routes/ReverseAuthRoute";
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getPosts } from "./features/users/UserSlice";
 const App = () => {
-  const user = useSelector(showUser);
-  const dispatch = useDispatch();
   return (
     <div className="font-montserrat">
       <Routes>

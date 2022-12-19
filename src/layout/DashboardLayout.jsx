@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }) => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content w-screen h-screen bg-teal-500 flex flex-col items-center justify-center">
         {/* <!-- Page content here --> */}
-        <div className="bg-black w-full h-full pt-6 pl-16 md:pl-5 text-sm md:text-lg  z-0">
+        <div className="bg-black w-full h-full pt-6 px-5 md:pl-5 text-sm md:text-lg  z-0">
           Welcome! User
           {children}
         </div>
