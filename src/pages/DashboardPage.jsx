@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Table } from "../components";
 const DashboardPage = () => {
   const navigate = useNavigate();
 
@@ -15,6 +15,7 @@ const DashboardPage = () => {
       <button className="bg-red-900" onClick={handlelogout}>
         Logout
       </button>
+      <Table />
     </div>
   );
 };

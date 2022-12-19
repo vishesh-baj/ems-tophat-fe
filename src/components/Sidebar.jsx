@@ -2,7 +2,6 @@ import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BiHomeAlt } from "react-icons/bi";
 import { BsFileEarmarkPersonFill, BsFillPersonFill } from "react-icons/bs";
-import { PATHS } from "../routes/paths";
 import { NavLink } from "react-router-dom";
 const Sidebar = () => {
   return (

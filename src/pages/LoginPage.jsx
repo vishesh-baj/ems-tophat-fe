@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -10,11 +10,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
   const [data, setData] = useState([]);
-  // const [isLogged, setIsLogged] = useState(false);
   const isLogged = useRef(false);
-
-  // const isOnline = useStatus();
-  // console.log(token);
 
   const schema = yup
     .object({
@@ -29,6 +25,8 @@ const LoginPage = () => {
     })
     .required();
 
+  const location = useLocation();
+  console.log(location);
   const {
     register,
     handleSubmit,
