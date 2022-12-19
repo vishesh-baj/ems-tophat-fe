@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { LoginPage, RegisterPage } from "./pages";
+import { PATHS } from "./routes/paths";
 import PrivateRoutes from "./routes/PrivateRoutes";
-import routes from "./routes/routes";
+
 const App = () => {
   // const dummy = {
   //   email: "test@gmail.com",
@@ -20,7 +21,7 @@ const App = () => {
     <div className="font-montserrat">
       <Routes>
         <Route element={<PrivateRoutes />}>
-          {routes.map(({ key, path, Element }) => (
+          {PATHS.map(({ key, path, Element }) => (
             <Route key={key} path={path} element={<Element />} />
           ))}
         </Route>
