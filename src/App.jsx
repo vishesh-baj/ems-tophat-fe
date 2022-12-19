@@ -1,7 +1,12 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { LoginPage, RegisterPage, DashboardPage } from "./pages";
+import {
+  LoginPage,
+  RegisterPage,
+  DashboardHomePage,
+  EmployeesPage,
+  CandidatesPage,
+} from "./pages";
 import PrivateRoute from "./routes/PrivateRoute";
 import ReverseAuthRoute from "./routes/ReverseAuthRoute";
 const App = () => {
@@ -9,12 +14,13 @@ const App = () => {
     <div className="font-montserrat">
       <Routes>
         <Route element={<PrivateRoute />}>
-          <Route element={<DashboardPage />} path="/dashboard" />
+          <Route element={<DashboardHomePage />} path="/dashboard" />
+          <Route element={<EmployeesPage />} path="/dashboard/employees" />
+          <Route element={<CandidatesPage />} path="/dashboard/candidates" />
         </Route>
         <Route element={<ReverseAuthRoute />}>
           <Route element={<LoginPage />} path="/login" />
         </Route>
-        
         <Route element={<RegisterPage />} path="/register" />
       </Routes>
     </div>

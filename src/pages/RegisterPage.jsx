@@ -39,7 +39,7 @@ const RegisterPage = () => {
 
     console.log(registerData);
     axios
-      .post("http://localhost:5000/register", registerData)
+      .post("http://localhost:8080/register", registerData)
       .then((res) => console.log(res.data));
   };
 
