@@ -5,6 +5,6 @@ const PrivateRoutes = () => {
   console.log(token);
 
   let auth = { token };
-  return auth.token ? <Outlet /> : <Navigate to="/LoginPage" />;
+  return auth.token ? <Outlet /> : <Navigate to="/login" />;
 };
 export default PrivateRoutes;

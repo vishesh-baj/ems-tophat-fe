@@ -2,7 +2,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
-import { PATHS } from "../routes/paths";
 import * as yup from "yup";
 import axios from "axios";
 
@@ -101,7 +100,7 @@ const RegisterPage = () => {
             <p className="text-red-600">{errors.confirmPassword?.message}</p>
             <div className="flex justify-between cursor-pointer px-2">
               <span className="text-sm md:text-neutral">
-                <NavLink to={PATHS.loginPage}>already have an account?</NavLink>
+                <NavLink to="/login">already have an account?</NavLink>
               </span>
               <span className="text-sm md:text-neutral">
                 <NavLink to="/">forget password</NavLink>

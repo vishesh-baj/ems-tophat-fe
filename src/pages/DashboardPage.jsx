@@ -6,7 +6,7 @@ const DashboardPage = () => {
 
   const handlelogout = () => {
     localStorage.clear();
-    navigate("/LoginPage");
+    navigate("/login");
   };
 
   return (

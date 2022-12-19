@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, redirect, useNavigate } from "react-router-dom";
-import { PATHS } from "../routes/paths";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -49,7 +48,7 @@ const LoginPage = () => {
           const localData = localStorage.getItem("token");
 
           if (localStorage.getItem("token") !== undefined && isLogged) {
-            return navigate(PATHS.dashboardPage);
+            return navigate("/dashboard");
           }
         }
       })
@@ -106,7 +105,7 @@ const LoginPage = () => {
           <p className="text-red-500">{errors.password?.message}</p>
           <div className="flex justify-between cursor-pointer px-2">
             <span>
-              <NavLink to={PATHS.registerPage}>create an account</NavLink>
+              <NavLink to="/register">create an account</NavLink>
             </span>
             <span>
               <NavLink to="/">forget password</NavLink>
