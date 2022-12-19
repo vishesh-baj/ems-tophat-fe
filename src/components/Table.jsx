@@ -1,33 +1,69 @@
 import React from "react";
-import MaterialTable from "material-table";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useTable, useSortBy, useGlobalFilter, useFilters } from "react-table";
+import MOCK_DATA from "./MOCK_DATA";
+import col from "./columns";
+import { useMemo } from "react";
+import GlobalFilter from "./GlobalFilter";
 
 const Table = () => {
-  const [data, setData] = useState([]);
-  const [token, setToken] = useState("");
+  const columns = useMemo(() => col, []);
+  const data = useMemo(() => MOCK_DATA, []);
+  const tableInstance = useTable(
+    {
+      columns,
+      data,
+    },
 
-  useEffect(() => {
-    setToken(localStorage.getItem("token"));
-  }, [data]);
-  useEffect(() => {
-    getData();
-  }, []);
+    useGlobalFilter,
+    useSortBy
+  );
 
-  const getData = async () => {
-    const { data } = await axios.get(
-      `http://localhost:8080/dashboard/employee/all`,
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    setData(data);
-    console.log("data", data);
-  };
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state,
+    setGlobalFilter,
+  } = tableInstance;
+  const { globalFilter } = state;
+  return (
+    <div>
+      <h1>Users Table</h1>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render("Header")}
+                  <span>
+                    {column.isSorted ? (column.isSortedDesc ? "↓" : "↑") : ""}
+                  </span>
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
 
-  return <div>Table</div>;
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 };
-
 export default Table;
