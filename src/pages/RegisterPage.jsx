@@ -38,7 +38,7 @@ const RegisterPage = () => {
       password: data.password,
     };
     const response = await axios.post(
-      "http://localhost:5000/register",
+      "http://localhost:8080/register",
       registerData
     );
     console.log(response);

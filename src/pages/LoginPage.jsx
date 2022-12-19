@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { PATHS } from "../routes/paths";
 import { useForm } from "react-hook-form";
@@ -7,6 +7,10 @@ import * as yup from "yup";
 import axios from "axios";
 
 const LoginPage = () => {
+  useEffect(() => {
+    console.log(localStorage.getItem("token"));
+  }, []);
+
   const schema = yup
     .object({
       email: yup
@@ -28,7 +32,7 @@ const LoginPage = () => {
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:5000/login", data)
+      .post("http://localhost:8080/login", data)
       .then((res) => console.log(res));
   };
 
