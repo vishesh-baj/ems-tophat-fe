@@ -8,7 +8,6 @@ import { useRef } from "react";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [token, setToken] = useState("");
   const [data, setData] = useState([]);
   const isLogged = useRef(false);
 
