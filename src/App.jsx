@@ -1,11 +1,12 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import {
   LoginPage,
   RegisterPage,
   DashboardHomePage,
-  EmployeesPage,
   CandidatesPage,
+  EmployeesPage,
 } from "./pages";
 import PrivateRoute from "./routes/PrivateRoute";
 import ReverseAuthRoute from "./routes/ReverseAuthRoute";
@@ -21,6 +22,7 @@ const App = () => {
         <Route element={<ReverseAuthRoute />}>
           <Route element={<LoginPage />} path="/login" />
         </Route>
+
         <Route element={<RegisterPage />} path="/register" />
       </Routes>
     </div>
