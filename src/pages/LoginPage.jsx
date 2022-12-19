@@ -34,27 +34,20 @@ const LoginPage = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
-    axios
-      .post("http://localhost:5000/login", data)
-      .then((res) => {
-        if (res.status === 200) {
-          // setIsLogged((prev) => setIsLogged(!prev));
-          isLogged.current = true;
-          console.log(isLogged);
-          // Saving token
-          localStorage.setItem("token", res.data.token);
-          const localData = localStorage.getItem("token");
+    axios.post("http://localhost:5000/login", data).then((res) => {
+      if (res.status === 200) {
+        // setIsLogged((prev) => setIsLogged(!prev));
+        isLogged.current = true;
+        console.log(isLogged);
+        // Saving token
+        localStorage.setItem("token", res.data.token);
+        const localData = localStorage.getItem("token");
 
-          if (localStorage.getItem("token") !== undefined && isLogged) {
-            return navigate("/dashboard");
-          }
+        if (localStorage.getItem("token") !== undefined && isLogged) {
+          return navigate("/dashboard");
         }
-      })
-      .finally(() => {
-        // if (localStorage.getItem("token") !== undefined && isLogged) {
-        //   return navigate(PATHS.dashboardPage);
-        // }
-      });
+      }
+    });
   };
 
   // if (token !== "") {
