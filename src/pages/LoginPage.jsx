@@ -1,11 +1,22 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, redirect, useNavigate } from "react-router-dom";
 import { PATHS } from "../routes/paths";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import axios from "axios";
+import { useRef } from "react";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const [token, setToken] = useState("");
+  const [data, setData] = useState([]);
+  // const [isLogged, setIsLogged] = useState(false);
+  const isLogged = useRef(false);
+
+  // const isOnline = useStatus();
+  // console.log(token);
+
   const schema = yup
     .object({
       email: yup
@@ -25,7 +36,36 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => console.log(data, errors);
+  const onSubmit = (data) => {
+    axios
+      .post("http://localhost:5000/login", data)
+      .then((res) => {
+        if (res.status === 200) {
+          // setIsLogged((prev) => setIsLogged(!prev));
+          isLogged.current = true;
+          console.log(isLogged);
+          // Saving token
+          localStorage.setItem("token", res.data.token);
+          const localData = localStorage.getItem("token");
+
+          if (localStorage.getItem("token") !== undefined && isLogged) {
+            return navigate(PATHS.dashboardPage);
+          }
+        }
+      })
+      .finally(() => {
+        // if (localStorage.getItem("token") !== undefined && isLogged) {
+        //   return navigate(PATHS.dashboardPage);
+        // }
+      });
+  };
+
+  // if (token !== "") {
+  //   // Saving token in local storage
+  //   localStorage.setItem("dataKey", JSON.stringify(data));
+  // }
+
+  useEffect(() => {}, [data]);
 
   return (
     <div className="w-screen h-screen flex">

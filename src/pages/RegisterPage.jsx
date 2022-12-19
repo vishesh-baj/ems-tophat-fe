@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { PATHS } from "../routes/paths";
 import * as yup from "yup";
+import axios from "axios";
 
 const RegisterPage = () => {
   const schema = yup.object({
@@ -30,7 +31,18 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const registerData = {
+      name: data.userName,
+      email: data.email,
+      password: data.password,
+    };
+
+    console.log(registerData);
+    axios
+      .post("http://localhost:5000/register", registerData)
+      .then((res) => console.log(res.data));
+  };
 
   return (
     <>
