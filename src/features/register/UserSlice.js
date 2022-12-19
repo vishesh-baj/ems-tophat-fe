@@ -38,9 +38,13 @@ const postSlice = createSlice({
   */
   name: "posts",
   // initialState: initialState[ES6 destructuring syntax]
-  initialState,
-  // Add reducers for the synchronous actions on the UI[we are not using this property for this tutorial]
-  reducers: {},
+  initialState: [],
+
+  reducers: {
+    saveData: (state, payload) => {
+      state.push(payload);
+    },
+  },
   // Add extraReducers for the asynchronous actions on the UI
   extraReducers: {
     [getPosts.pending]: (state, action) => {
@@ -68,5 +72,5 @@ const postSlice = createSlice({
   },
 });
 
-// Export the reducer logic from the slice
+// Export the reducer
 export default postsSlice.reducer;
