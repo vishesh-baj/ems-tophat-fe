@@ -38,9 +38,13 @@ const postSlice = createSlice({
   */
   name: "posts",
   // initialState: initialState[ES6 destructuring syntax]
-  initialState,
+  initialState: [],
 
-  reducers: {},
+  reducers: {
+    saveData: (state, payload) => {
+      state.push(payload);
+    },
+  },
   // Add extraReducers for the asynchronous actions on the UI
   extraReducers: {
     [getPosts.pending]: (state, action) => {
