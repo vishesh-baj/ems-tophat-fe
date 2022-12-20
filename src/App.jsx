@@ -13,6 +13,8 @@ import PrivateRoute from "./routes/PrivateRoute";
 import ReverseAuthRoute from "./routes/ReverseAuthRoute";
 import HomePage from "./pages/HomePage";
 import PageNotFound from "./pages/PageNotFound";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
   return (
     <div className="font-montserrat">

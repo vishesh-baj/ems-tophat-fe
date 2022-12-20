@@ -3,6 +3,9 @@ import { useTable, useSortBy, useGlobalFilter, useFilters } from "react-table";
 import { useMemo } from "react";
 import GlobalFilter from "./GlobalFilter";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   BsArrowUp,
   BsArrowDown,
@@ -157,7 +160,22 @@ const Table = () => {
   function finalEdit(e) {
     e.preventDefault();
     const id = localStorage.getItem("id");
-    console.log(id);
+
+    if (!name) {
+      return toast.warn("Name field cannot be empty");
+    }
+
+    if (!contactNumber) {
+      return toast.warn("Contact field cannot be empty");
+    }
+
+    if (!personalEmail) {
+      return toast.warn("Personal Email field cannot be empty");
+    }
+
+    if (!professionalEmail) {
+      return toast.warn("Professional Email field cannot be empty");
+    }
 
     const data = {
       name,
@@ -194,7 +212,6 @@ const Table = () => {
   }, [editableData]);
 
   const inputRef = useRef();
-
   return (
     <div className="container">
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
@@ -265,7 +282,6 @@ const Table = () => {
         type="checkbox"
         id="my-modal-3"
         className="modal-toggle"
-        onChange={(e) => console.log(e)}
         ref={inputRef}
       />
       <div className="modal">
@@ -345,6 +361,7 @@ const Table = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
