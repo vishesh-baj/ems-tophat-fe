@@ -7,6 +7,7 @@ const PATHS = {
   dashboardCandidatesList: "/dashboard/candidates-list",
   dashboardRecordsList: "/dashboard/records-list",
   pageNotFound: "/page-not-found",
+  recordsList: "/dashboard/records-list",
 };
 
 export default PATHS;

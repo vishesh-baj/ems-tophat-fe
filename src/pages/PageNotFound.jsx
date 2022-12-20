@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { PATHS } from "../constants";
 
 const PageNotFound = () => {
   const navigate = useNavigate();
   const handleP = () => {
-    navigate("/login");
+    navigate(PATHS.login);
   };
   const handlePF = () => {
-    navigate("/dashboard/home");
+    navigate(PATHS.dashboardHome);
   };
   return (
     <div>
@@ -23,7 +24,7 @@ const PageNotFound = () => {
         Dashboard
       </button>
       <button
-        to="/login"
+        to={PATHS.login}
         className="mx-80   min-w-[50%]  bg-blue-500 hover:bg-green-700   text-white text-2xl font-bold py-2 px-4 rounded-xl my-2"
         onClick={handleP}
       >

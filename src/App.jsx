@@ -2,32 +2,41 @@ import { Home } from "@material-ui/icons";
 import axios from "axios";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { PATHS } from "./constants";
 import {
   LoginPage,
   RegisterPage,
   DashboardHomePage,
   CandidatesPage,
   EmployeesPage,
+  RecordsPage,
+  PageNotFoundPage,
+  HomePage,
 } from "./pages";
 import PrivateRoute from "./routes/PrivateRoute";
 import ReverseAuthRoute from "./routes/ReverseAuthRoute";
-import HomePage from "./pages/HomePage";
-import PageNotFound from "./pages/PageNotFound";
 const App = () => {
   return (
     <div className="font-montserrat">
       <Routes>
         <Route element={<PrivateRoute />}>
-          <Route element={<EmployeesPage />} path="/dashboard/employees" />
-          <Route element={<DashboardHomePage />} path="/dashboard/home" />
-          <Route element={<CandidatesPage />} path="/dashboard/candidates" />
+          <Route
+            element={<EmployeesPage />}
+            path={PATHS.dashboardEmployeesList}
+          />
+          <Route element={<DashboardHomePage />} path={PATHS.dashboardHome} />
+          <Route
+            element={<CandidatesPage />}
+            path={PATHS.dashboardCandidatesList}
+          />
+          <Route element={<RecordsPage />} path={PATHS.recordsList} />
         </Route>
         <Route element={<ReverseAuthRoute />}>
-          <Route element={<LoginPage />} path="/login" />
+          <Route element={<LoginPage />} path={PATHS.login} />
         </Route>
-        <Route element={<HomePage />} path="/" />
-        <Route element={<RegisterPage />} path="/register" />
-        <Route path="/*" element={<PageNotFound />} />
+        <Route element={<HomePage />} path={PATHS.root} />
+        <Route element={<RegisterPage />} path={PATHS.register} />
+        <Route path="/*" element={<PageNotFoundPage />} />
       </Routes>
     </div>
   );

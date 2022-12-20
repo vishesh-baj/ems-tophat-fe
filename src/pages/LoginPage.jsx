@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { useRef } from "react";
+import { PATHS } from "../constants";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const LoginPage = () => {
         const localData = localStorage.getItem("token");
 
         if (localStorage.getItem("token") !== undefined && isLogged) {
-          return navigate("/dashboard/home");
+          return navigate(PATHS.dashboardHome);
         }
       }
     });
@@ -96,10 +97,10 @@ const LoginPage = () => {
           <p className="text-red-500">{errors.password?.message}</p>
           <div className="flex justify-between cursor-pointer px-2">
             <span>
-              <NavLink to="/register">create an account</NavLink>
+              <NavLink to={PATHS.register}>create an account</NavLink>
             </span>
             <span>
-              <NavLink to="/">forget password</NavLink>
+              <NavLink to={PATHS.root}>forget password</NavLink>
             </span>
           </div>
           <button type="submit" className="btn btn-secondary w-1/2">

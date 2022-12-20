@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
+import { PATHS } from "../constants";
 
 const RegisterPage = () => {
   const schema = yup.object({
@@ -100,10 +101,10 @@ const RegisterPage = () => {
             <p className="text-red-600">{errors.confirmPassword?.message}</p>
             <div className="flex justify-between cursor-pointer px-2">
               <span className="text-sm md:text-neutral">
-                <NavLink to="/login">already have an account?</NavLink>
+                <NavLink to={PATHS.login}>already have an account?</NavLink>
               </span>
               <span className="text-sm md:text-neutral">
-                <NavLink to="/">forget password</NavLink>
+                <NavLink to={PATHS.root}>forget password</NavLink>
               </span>
             </div>
             <button type="submit" className="btn btn-secondary w-1/2">

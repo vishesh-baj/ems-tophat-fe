@@ -1,10 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { PATHS } from "../constants";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const handlePage = () => {
-    navigate("/login");
+    navigate(PATHS.login);
   };
   return (
     <div>

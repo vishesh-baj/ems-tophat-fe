@@ -23,13 +23,14 @@ const Sidebar = () => {
         <div className="w-full h-16 flex justify-between items-center px-2 bg-base-100">
           <span className="ml-2 text-red-500"> Tophat</span>
         </div>
-        <div>
+        <div className="p-2">
           <SiderbarItem
             path={PATHS.dashboardHome}
             iconSize={20}
             Icon={AiOutlineHome}
             title="Home"
             collapseState={isCollapsed}
+            tooltip="Dashboard Home"
           />
           <SiderbarItem
             path={PATHS.dashboardEmployeesList}
@@ -37,6 +38,7 @@ const Sidebar = () => {
             Icon={IoPeopleCircle}
             title="Employees"
             collapseState={isCollapsed}
+            tooltip="Employees List"
           />
           <SiderbarItem
             path={PATHS.dashboardCandidatesList}
@@ -44,6 +46,7 @@ const Sidebar = () => {
             Icon={AiOutlineUsergroupAdd}
             title="Candidates"
             collapseState={isCollapsed}
+            tooltip="Candidates List"
           />
           <SiderbarItem
             path={PATHS.dashboardRecordsList}
@@ -51,6 +54,7 @@ const Sidebar = () => {
             Icon={AiOutlineCalendar}
             title="Records"
             collapseState={isCollapsed}
+            tooltip="Records List"
           />
         </div>
       </div>
