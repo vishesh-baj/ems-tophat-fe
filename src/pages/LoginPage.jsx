@@ -34,7 +34,7 @@ const LoginPage = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/login", data).then((res) => {
+    axios.post("http://localhost:8080/login", data).then((res) => {
       if (res.status === 200) {
         // setIsLogged((prev) => setIsLogged(!prev));
         isLogged.current = true;
