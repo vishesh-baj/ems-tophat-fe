@@ -1,3 +1,4 @@
+import { Home } from "@material-ui/icons";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -10,6 +11,8 @@ import {
 } from "./pages";
 import PrivateRoute from "./routes/PrivateRoute";
 import ReverseAuthRoute from "./routes/ReverseAuthRoute";
+import HomePage from "./pages/HomePage";
+import PageNotFound from "./pages/PageNotFound";
 const App = () => {
   return (
     <div className="font-montserrat">
@@ -22,8 +25,9 @@ const App = () => {
         <Route element={<ReverseAuthRoute />}>
           <Route element={<LoginPage />} path="/login" />
         </Route>
-
+        <Route element={<HomePage />} path="/" />
         <Route element={<RegisterPage />} path="/register" />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
