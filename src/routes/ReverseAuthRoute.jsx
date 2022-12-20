@@ -5,7 +5,7 @@ const ReverseAuthRoute = () => {
   const location = useLocation();
   const token = localStorage.getItem("token");
   if (location.pathname === "/login" && token) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/dashboard/home" />;
   }
   return <Outlet />;
 };

@@ -1,35 +1,36 @@
 const col = [
   {
-    Header: "Id",
-    accessor: "id",
+    Header: "name",
+    accessor: "name",
   },
   {
-    Header: "firstname",
-    accessor: "first_name",
+    Header: "contact Number",
+    accessor: "contactNumber",
   },
   {
-    Header: "lastname",
-    accessor: "last_name",
+    Header: "Alt Contact Number",
+    accessor: "alternativeContactNumber",
   },
   {
-    Header: "Email",
-    accessor: "email",
+    Header: "Personal Email",
+    accessor: "personalEmail",
   },
   {
-    Header: "DOB",
-    accessor: "date_of_birth",
+    Header: "professional email",
+    accessor: "professionalEmail",
   },
   {
-    Header: "AGE",
-    accessor: "age",
+    Header: "address",
+    accessor: "address",
   },
   {
-    Header: "country",
-    accessor: "country",
+    Header: "password",
+    accessor: "password",
   },
   {
-    Header: "Phone",
-    accessor: "phone",
-  },
+    Header: "",
+    accessor: "DEL",
+    Cell: () => <h1>DEL</h1>
+  }
 ];
 export default col;
