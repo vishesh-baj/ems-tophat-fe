@@ -6,15 +6,16 @@ import {
 } from "react-icons/tb";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineLogout } from "react-icons/ai";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../constants";
 const Navbar = () => {
   const { isCollapsed, setIsCollapsed } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.clear();
-    Navigate(PATHS.login);
     console.log("Login");
+    navigate(PATHS.login);
   };
 
   return (

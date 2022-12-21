@@ -6,6 +6,7 @@ import "./index.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
+import AppContextProvider from "./contexts/AppContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
