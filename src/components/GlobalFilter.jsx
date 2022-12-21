@@ -67,7 +67,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
     <div className="w-full flex justify-end mb-5 gap-3">
       {/* Add Employee Button */}
       <label htmlFor="my-modal-5" className="btn">
-        Add Employee
+        Add
       </label>
 
       {/* Modal */}
@@ -154,7 +154,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
         className="input input-info"
         value={filter || ""}
         onChange={(e) => setFilter(e.target.value)}
-        placeholder="Search Employees"
+        placeholder="Search"
       />
     </div>
   );
