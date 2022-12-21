@@ -13,9 +13,12 @@ import {
   BsPencil,
 } from "react-icons/bs";
 import swal from "sweetalert";
-import { useNavigate } from "react-router";
 
 const Table = () => {
+  const [apiData, setApiData] = useState([]);
+  const [editableData, setEditableData] = useState([]);
+  const attendence = useRef();
+
   const col = [
     {
       Header: "name",
@@ -46,6 +49,26 @@ const Table = () => {
       accessor: "password",
     },
     {
+      Header: "Attendence",
+      accessor: "attendence",
+      Cell: () => (
+        <div className="flex w-full h-full items-center justify-center gap-2">
+          <select
+            className="p-2 rounded-lg"
+            onChange={(e) => (attendence.current = e.target.value)}
+          >
+            <option>Select</option>
+            <option>Absent</option>
+            <option>Present</option>
+            <option>Work from Home</option>
+          </select>
+          <button className="btn btn-sm" onClick={markAttendenceHandler}>
+            Mark
+          </button>
+        </div>
+      ),
+    },
+    {
       Header: "Delete",
       accessor: "delete",
       Cell: () => (
@@ -57,7 +80,7 @@ const Table = () => {
     {
       Header: "Edit",
       accessor: "edit",
-      Cell: (props) => (
+      Cell: () => (
         <div className="flex w-full h-full items-center justify-center">
           {/* <BsPencil size={20} className='cursor-pointer'/> */}
 
@@ -69,9 +92,6 @@ const Table = () => {
       ),
     },
   ];
-  const [apiData, setApiData] = useState([]);
-  const [editableData, setEditableData] = useState([]);
-  const navigate = useNavigate();
 
   // Modal fields
   const [name, setName] = useState("");
@@ -81,6 +101,32 @@ const Table = () => {
   const [professionalEmail, setProfessionalEmail] = useState("");
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
+
+  function markAttendenceHandler() {
+    const data = localStorage.getItem("pd").split(",");
+    const atce = attendence.current;
+    const finalData = {
+      userId: data[0],
+      name: data[1],
+      email: data[2],
+      attendence: atce,
+      time: Date.now(),
+    };
+
+    axios
+      .post("http://localhost:5000/dashboard/employee/attendence", finalData, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 203) {
+          return toast.warn(res.data.message);
+        }
+        return toast.success(res.data.messge);
+      });
+  }
 
   const getData = async () => {
     const response = await axios.get(
@@ -256,12 +302,20 @@ const Table = () => {
                       <td
                         {...cell.getCellProps()}
                         onClick={() => {
+                          if (cell.column.Header === "Attendence") {
+                            const id = cell.row.original._id;
+                            const name = cell.row.original.name;
+                            const personalEmail =
+                              cell.row.original.personalEmail;
+                            const personalDetails = [id, name, personalEmail];
+                            localStorage.setItem("pd", personalDetails);
+                          }
+
                           if (cell.column.Header === "Delete") {
                             return deleteHandler(cell.row.original._id);
                           }
 
                           if (cell.column.Header === "Edit") {
-                            console.log("Edit >>> ", cell.row.original._id);
                             editHandler(cell.row.original._id);
                           }
                         }}
