@@ -6,11 +6,14 @@ import {
 } from "react-icons/tb";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineLogout } from "react-icons/ai";
+import { MdOutlineDarkMode, MdOutlineWbSunny } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../constants";
+
 const Navbar = () => {
   const { isCollapsed, setIsCollapsed } = useContext(AppContext);
   const navigate = useNavigate();
+  const { darkMode, setDarkMode } = useContext(AppContext);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -36,6 +39,11 @@ const Navbar = () => {
           />
         )}
       </div>
+      {darkMode ? (
+        <MdOutlineDarkMode size={20} />
+      ) : (
+        <MdOutlineWbSunny size={20} />
+      )}
       <div className="tooltip tooltip-left tooltip-info" data-tip="logout">
         <AiOutlineLogout
           onClick={() => handleLogout()}
@@ -51,11 +59,18 @@ const Navbar = () => {
           size={20}
         />
 
-        <AiOutlineLogout
-          onClick={() => handleLogout()}
-          className="block md:hidden cursor-pointer"
-          size={20}
-        />
+        <div className="flex gap-2">
+          {darkMode ? (
+            <MdOutlineDarkMode size={20} />
+          ) : (
+            <MdOutlineWbSunny size={20} />
+          )}
+          <AiOutlineLogout
+            onClick={() => handleLogout()}
+            className="block md:hidden cursor-pointer"
+            size={20}
+          />
+        </div>
       </div>
     </div>
   );

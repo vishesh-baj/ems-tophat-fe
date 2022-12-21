@@ -1,6 +1,6 @@
 import { Home } from "@material-ui/icons";
 import axios from "axios";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { PATHS } from "./constants";
 import {

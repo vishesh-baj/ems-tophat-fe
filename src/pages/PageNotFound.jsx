@@ -10,6 +10,7 @@ const PageNotFound = () => {
   const handlePF = () => {
     navigate(PATHS.dashboardHome);
   };
+  
   return (
     <div>
       <div className="text-2xl font-extrabold  flex justify-center  my-36">
