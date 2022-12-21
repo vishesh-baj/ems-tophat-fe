@@ -5,12 +5,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { useRef } from "react";
-import { PATHS } from "../constants";
+import { ToastContainer, toast } from "react-toastify";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const isLogged = useRef(false);
+  const [emails, setEmails] = useState("");
+  const [passwords, setPasswords] = useState("");
 
   const schema = yup
     .object({
@@ -34,7 +36,7 @@ const LoginPage = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:8080/login", data).then((res) => {
+    axios.post("http://localhost:5000/login", data).then((res) => {
       if (res.status === 200) {
         // setIsLogged((prev) => setIsLogged(!prev));
         isLogged.current = true;
@@ -45,7 +47,7 @@ const LoginPage = () => {
         const localData = localStorage.getItem("token");
 
         if (localStorage.getItem("token") !== undefined && isLogged) {
-          return navigate(PATHS.dashboardHome);
+          return navigate("/dashboard/home");
         }
       }
     });
@@ -55,6 +57,18 @@ const LoginPage = () => {
   //   // Saving token in local storage
   //   localStorage.setItem("dataKey", JSON.stringify(data));
   // }
+
+  const notify = () => {
+    const isEmailValid = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(
+      emails
+    );
+    if (!isEmailValid) {
+      return toast("enter valid email");
+    }
+    if (passwords.length < 6) {
+      return toast("password must have minimum of 6 characters");
+    }
+  };
 
   useEffect(() => {}, [data]);
 
@@ -85,6 +99,7 @@ const LoginPage = () => {
             type="text"
             placeholder="Email"
             className="input input-bordered"
+            onChange={(e) => setEmails(e.target.value)}
           />
           <p className="text-red-500">{errors.email?.message}</p>
           <input
@@ -93,21 +108,27 @@ const LoginPage = () => {
             type="password"
             placeholder="Password"
             className="input input-bordered"
+            onChange={(e) => setPasswords(e.target.value)}
           />
           <p className="text-red-500">{errors.password?.message}</p>
           <div className="flex justify-between cursor-pointer px-2">
             <span>
-              <NavLink to={PATHS.register}>create an account</NavLink>
+              <NavLink to="/register">create an account</NavLink>
             </span>
             <span>
-              <NavLink to={PATHS.root}>forget password</NavLink>
+              <NavLink to="/">forget password</NavLink>
             </span>
           </div>
-          <button type="submit" className="btn btn-secondary w-1/2">
+          <button
+            type="submit"
+            className="btn btn-secondary w-1/2"
+            onClick={notify}
+          >
             Login
           </button>
         </form>
       </div>
+      <ToastContainer limit={1} />
     </div>
   );
 };
