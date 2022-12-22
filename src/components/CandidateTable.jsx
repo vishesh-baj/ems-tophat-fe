@@ -147,7 +147,7 @@ const CandidateTable = () => {
     }).then((res) => {
       if (res) {
         axios
-          .delete(`http://localhost:5000/dashboard/candidate/delete/${id}`, {
+          .delete(`${BASE_URL}/dashboard/candidate/delete/${id}`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -208,7 +208,7 @@ const CandidateTable = () => {
 
     if (name && email && contactNumber && technology) {
       axios
-        .put(`http://localhost:5000/dashboard/candidate/update/${id}`, data, {
+        .put(`${BASE_URL}/dashboard/candidate/update/${id}`, data, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
           },

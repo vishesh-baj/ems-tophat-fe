@@ -32,13 +32,13 @@ const Navbar = () => {
       <div className="hidden md:block">
         {isCollapsed ? (
           <TbLayoutSidebarRightCollapse
-            className="cursor-pointer hidden md:block"
+            className="cursor-pointer hidden md:block text-secondary hover:text-secondary-focus"
             onClick={() => setIsCollapsed((prevState) => !isCollapsed)}
             size={20}
           />
         ) : (
           <TbLayoutSidebarRightExpand
-            className="cursor-pointer hidden md:block"
+            className="cursor-pointer hidden md:block text-secondary hover:text-secondary-focus"
             onClick={() => setIsCollapsed((prevState) => !isCollapsed)}
             size={20}
           />
@@ -47,13 +47,13 @@ const Navbar = () => {
       <div className="flex gap-3 pr-9">
         {darkMode ? (
           <MdOutlineDarkMode
-            className="cursor-pointer"
+            className="text-primary hover:text-primary-focus cursor-pointer"
             onClick={handleDarkMode}
             size={20}
           />
         ) : (
           <MdOutlineWbSunny
-            className="cursor-pointer"
+            className="text-primary hover:text-primary-focus cursor-pointer"
             onClick={handleDarkMode}
             size={20}
           />

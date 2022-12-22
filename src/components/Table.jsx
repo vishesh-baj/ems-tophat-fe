@@ -54,7 +54,7 @@ const Table = () => {
       Cell: () => (
         <div className="flex w-full h-full items-center justify-center gap-2">
           <select
-            className="p-2 rounded-lg"
+            className="p-2 rounded-xl"
             onChange={(e) => (attendence.current = e.target.value)}
           >
             <option>Select</option>

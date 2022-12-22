@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }) => {
       body.setAttribute("data-theme", systemDefault);
     }
     return darkMode
-      ? body.setAttribute("data-theme", "dark")
+      ? body.setAttribute("data-theme", "night")
       : body.setAttribute("data-theme", "cupcake");
   }, [darkMode]);
   return (
