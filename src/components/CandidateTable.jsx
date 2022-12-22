@@ -188,6 +188,10 @@ const CandidateTable = () => {
       toast.warn("Contact Number cannot be empty");
     }
 
+    if (contactNumber.length < 10) {
+      toast.warn("Contact Number cannot have less than 10 digits");
+    }
+
     if (!technology) {
       toast.warn("Technology cannot be empty");
     }
