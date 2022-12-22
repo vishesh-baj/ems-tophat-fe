@@ -122,7 +122,7 @@ const LoginPage = () => {
               <NavLink to={PATHS.register}>create an account</NavLink>
             </span>
             <span>
-              <NavLink to={PATHS.root}>forget password</NavLink>
+              <NavLink to={PATHS.forgetPassword}>forget password</NavLink>
             </span>
           </div>
           <button

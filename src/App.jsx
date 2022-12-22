@@ -17,6 +17,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import ReverseAuthRoute from "./routes/ReverseAuthRoute";
 import PageNotFound from "./pages/PageNotFound";
 import "react-toastify/dist/ReactToastify.css";
+import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
         </Route>
         <Route element={<HomePage />} path={PATHS.root} />
         <Route element={<RegisterPage />} path={PATHS.register} />
+        <Route element={<ForgetPasswordPage />} path={PATHS.forgetPassword} />
         <Route path="/*" element={<PageNotFoundPage />} />
       </Routes>
     </div>
