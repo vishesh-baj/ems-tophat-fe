@@ -20,7 +20,7 @@ const Sidebar = () => {
           isCollapsed ? "w-[100px]" : "w-1/4"
         } h-full bg-base-200 transition-all ease-in-out duration-200 hidden md:flex flex-col`}
       >
-        <div className="w-full h-16 flex justify-between items-center px-2 bg-base-100">
+        <div className="w-full h-16 flex justify-between items-center px-2">
           <span className="ml-2 text-red-500"> Tophat</span>
         </div>
         <div className="p-2">

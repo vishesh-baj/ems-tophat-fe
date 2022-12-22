@@ -23,10 +23,11 @@ const Navbar = () => {
 
   const handleDarkMode = () => {
     setDarkMode((prevState) => !prevState);
+    localStorage.setItem("theme", darkMode);
   };
 
   return (
-    <div className="navbar flex justify-between bg-base-100">
+    <div className="navbar flex justify-between">
       {/* for desktop */}
       <div className="hidden md:block">
         {isCollapsed ? (
@@ -43,25 +44,27 @@ const Navbar = () => {
           />
         )}
       </div>
-      {darkMode ? (
-        <MdOutlineDarkMode
-          className="cursor-pointer"
-          onClick={handleDarkMode}
-          size={20}
-        />
-      ) : (
-        <MdOutlineWbSunny
-          className="cursor-pointer"
-          onClick={handleDarkMode}
-          size={20}
-        />
-      )}
-      <div className="tooltip tooltip-left tooltip-info" data-tip="logout">
-        <AiOutlineLogout
-          onClick={() => handleLogout()}
-          className="md:block hidden cursor-pointer"
-          size={20}
-        />
+      <div className="flex gap-3">
+        {darkMode ? (
+          <MdOutlineDarkMode
+            className="cursor-pointer"
+            onClick={handleDarkMode}
+            size={20}
+          />
+        ) : (
+          <MdOutlineWbSunny
+            className="cursor-pointer"
+            onClick={handleDarkMode}
+            size={20}
+          />
+        )}
+        <div className="tooltip tooltip-left tooltip-info" data-tip="logout">
+          <AiOutlineLogout
+            onClick={() => handleLogout()}
+            className="md:block hidden cursor-pointer"
+            size={20}
+          />
+        </div>
       </div>
       {/* for mobile */}
       <div className="flex justify-between md:hidden w-full">

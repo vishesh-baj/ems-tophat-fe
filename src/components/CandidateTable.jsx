@@ -5,7 +5,7 @@ import GlobalFilter from "./GlobalFilter";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { BASE_URL } from "../constants";
 import {
   BsArrowUp,
   BsArrowDown,
@@ -97,14 +97,11 @@ const CandidateTable = () => {
   const [note, setNote] = useState("");
 
   const getData = async () => {
-    const response = await axios.get(
-      "http://localhost:5000/dashboard/candidate/all",
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const response = await axios.get(`${BASE_URL}/dashboard/candidate/all`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     setApiData(response.data.result);
   };
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-
-const LoginPage = () => {
+import { PATHS } from "../constants";
+const ForgetPasswordPage = () => {
   return (
     <div className="w-screen h-screen flex">
       <div className="w-3/4 h-full  hidden md:flex relative">
@@ -38,10 +38,10 @@ const LoginPage = () => {
 
           <div className="flex justify-between cursor-pointer px-2">
             <span>
-              <NavLink to="/register">create an account</NavLink>
+              <NavLink to={PATHS.register}>create an account</NavLink>
             </span>
             <span>
-              <NavLink to="/">forget password</NavLink>
+              <NavLink to={PATHS.root}>forget password</NavLink>
             </span>
           </div>
           <button
@@ -58,4 +58,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgetPasswordPage;

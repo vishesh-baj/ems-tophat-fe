@@ -6,3 +6,4 @@ export { default as CandidatesPage } from "./CandidatesPage";
 export { default as RecordsPage } from "./RecordsPage";
 export { default as PageNotFoundPage } from "./PageNotFound";
 export { default as HomePage } from "./HomePage";
+export { default as ForgetPasswordPage } from "./ForgetPasswordPage";

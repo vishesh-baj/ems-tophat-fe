@@ -5,7 +5,7 @@ import GlobalFilter from "./GlobalFilter";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { BASE_URL } from "../constants";
 import {
   BsArrowUp,
   BsArrowDown,
@@ -114,7 +114,7 @@ const Table = () => {
     };
 
     axios
-      .post("http://localhost:5000/dashboard/employee/attendence", finalData, {
+      .post(`${BASE_URL}/dashboard/employee/attendence`, finalData, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -129,14 +129,11 @@ const Table = () => {
   }
 
   const getData = async () => {
-    const response = await axios.get(
-      "http://localhost:5000/dashboard/employee/all",
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const response = await axios.get(`${BASE_URL}/dashboard/employee/all`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     setApiData(response.data.result);
   };
 
@@ -182,7 +179,7 @@ const Table = () => {
     }).then((res) => {
       if (res) {
         axios
-          .delete(`http://localhost:5000/dashboard/employee/delete/${id}`, {
+          .delete(`${BASE_URL}/dashboard/employee/delete/${id}`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -234,7 +231,7 @@ const Table = () => {
     };
 
     axios
-      .put(`http://localhost:5000/dashboard/employee/update/${id}`, data, {
+      .put(`${BASE_URL}/dashboard/employee/update/${id}`, data, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -261,7 +258,7 @@ const Table = () => {
   return (
     <div className="container">
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-      <div className="h-[80vh] overflow-scroll rounded-xl">
+      <div className="h-[80vh] overflow-scroll rounded-lg">
         <table className="table w-full" {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (

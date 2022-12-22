@@ -4,8 +4,10 @@ import { Table } from "../components";
 const EmployeesPage = () => {
   return (
     <DashboardLayout>
-      <h1>Employees Page</h1>
-      <Table />
+      <div className="p-5">
+        <h1>Employee page</h1>
+        <Table />
+      </div>
     </DashboardLayout>
   );
 };
