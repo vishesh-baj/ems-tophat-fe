@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar flex justify-between">
+    <div className="navbar flex justify-between mx-2">
       {/* for desktop */}
       <div className="hidden md:block">
         {isCollapsed ? (
@@ -44,7 +44,7 @@ const Navbar = () => {
           />
         )}
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-3 pr-9">
         {darkMode ? (
           <MdOutlineDarkMode
             className="cursor-pointer"

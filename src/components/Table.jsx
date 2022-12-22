@@ -258,7 +258,7 @@ const Table = () => {
   return (
     <div className="container">
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-      <div className="h-[80vh] overflow-scroll rounded-lg">
+      <div className="h-auto overflow-scroll rounded-lg">
         <table className="table w-full" {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
