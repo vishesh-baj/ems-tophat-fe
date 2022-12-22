@@ -21,6 +21,10 @@ const Navbar = () => {
     navigate(PATHS.login);
   };
 
+  const handleDarkMode = () => {
+    setDarkMode((prevState) => !prevState);
+  };
+
   return (
     <div className="navbar flex justify-between bg-base-100">
       {/* for desktop */}
@@ -40,9 +44,17 @@ const Navbar = () => {
         )}
       </div>
       {darkMode ? (
-        <MdOutlineDarkMode size={20} />
+        <MdOutlineDarkMode
+          className="cursor-pointer"
+          onClick={handleDarkMode}
+          size={20}
+        />
       ) : (
-        <MdOutlineWbSunny size={20} />
+        <MdOutlineWbSunny
+          className="cursor-pointer"
+          onClick={handleDarkMode}
+          size={20}
+        />
       )}
       <div className="tooltip tooltip-left tooltip-info" data-tip="logout">
         <AiOutlineLogout
@@ -61,9 +73,9 @@ const Navbar = () => {
 
         <div className="flex gap-2">
           {darkMode ? (
-            <MdOutlineDarkMode size={20} />
+            <MdOutlineDarkMode onClick={handleDarkMode} size={20} />
           ) : (
-            <MdOutlineWbSunny size={20} />
+            <MdOutlineWbSunny onClick={handleDarkMode} size={20} />
           )}
           <AiOutlineLogout
             onClick={() => handleLogout()}
