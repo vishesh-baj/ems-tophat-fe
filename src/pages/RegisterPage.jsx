@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
-import { PATHS } from "../constants";
+import { BASE_URL, PATHS } from "../constants";
 
 const RegisterPage = () => {
   const schema = yup.object({
@@ -40,7 +40,7 @@ const RegisterPage = () => {
 
     console.log(registerData);
     axios
-      .post("http://localhost:8080/register", registerData)
+      .post(`${BASE_URL}/register`, registerData)
       .then((res) => console.log(res.data));
   };
 
@@ -104,7 +104,7 @@ const RegisterPage = () => {
                 <NavLink to={PATHS.login}>already have an account?</NavLink>
               </span>
               <span className="text-sm md:text-neutral">
-                <NavLink to={PATHS.root}>forget password</NavLink>
+                <NavLink to={PATHS.forgetPassword}>forget password</NavLink>
               </span>
             </div>
             <button type="submit" className="btn btn-secondary w-1/2">

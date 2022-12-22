@@ -2,6 +2,7 @@ const PATHS = {
   root: "/",
   login: "/login",
   register: "/register",
+  forgetPassword: "/forgetPassword",
   dashboardHome: "/dashboard/home",
   dashboardEmployeesList: "/dashboard/employees-list",
   dashboardCandidatesList: "/dashboard/candidates-list",

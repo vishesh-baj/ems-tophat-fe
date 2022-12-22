@@ -4,13 +4,13 @@ import { PATHS } from "../constants";
 
 const PageNotFound = () => {
   const navigate = useNavigate();
-  const handleP = () => {
+  const handleLoginNavigate = () => {
     navigate(PATHS.login);
   };
-  const handlePF = () => {
+  const handleDashboardNavigate = () => {
     navigate(PATHS.dashboardHome);
   };
-  
+
   return (
     <div>
       <div className="text-2xl font-extrabold  flex justify-center  my-36">
@@ -20,14 +20,14 @@ const PageNotFound = () => {
       </div>
       <button
         className="mx-80   min-w-[50%]  bg-blue-500 hover:bg-green-700   text-white text-2xl font-bold py-2 px-4 rounded-xl my-2"
-        onClick={handlePF}
+        onClick={handleDashboardNavigate}
       >
         Dashboard
       </button>
       <button
         to={PATHS.login}
         className="mx-80   min-w-[50%]  bg-blue-500 hover:bg-green-700   text-white text-2xl font-bold py-2 px-4 rounded-xl my-2"
-        onClick={handleP}
+        onClick={handleLoginNavigate}
       >
         Login
       </button>

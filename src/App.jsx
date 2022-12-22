@@ -1,6 +1,6 @@
 import { Home } from "@material-ui/icons";
 import axios from "axios";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { PATHS } from "./constants";
 import {
@@ -19,6 +19,10 @@ import PageNotFound from "./pages/PageNotFound";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  // useEffect(() => {
+  //   const html = document.getElementByTagName("html");
+  //   console.log(html);
+  // }, []);
   return (
     <div className="font-montserrat">
       <Routes>
