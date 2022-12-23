@@ -12,5 +12,4 @@ const CandidatesPage = () => {
     </DashboardLayout>
   );
 };
-
 export default CandidatesPage;
