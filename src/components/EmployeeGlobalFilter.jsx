@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-const GlobalFilter = ({ filter, setFilter }) => {
+const EmployeeGlobalFilter = ({ filter, setFilter }) => {
   const [name, setName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [alternativeContactNumber, setAlternativeContactNumber] = useState("");
   const [personalEmail, setPersonalEmail] = useState("");
   const [professionalEmail, setProfessionalEmail] = useState("");
+  const [category, setCategory] = useState("");
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const inputRef = useRef();
@@ -31,12 +32,17 @@ const GlobalFilter = ({ filter, setFilter }) => {
       toast.warn("Please fill your professional email");
     }
 
+    if (!category || category === "Select employee Category") {
+      toast.warn("Please select the Category of employee");
+    }
+
     const data = {
       name,
       contactNumber,
       alternativeContactNumber,
       personalEmail,
       professionalEmail,
+      category,
       address,
       password,
     };
@@ -45,17 +51,29 @@ const GlobalFilter = ({ filter, setFilter }) => {
       return toast.warn("Contact Number cannot have less than 10 digits");
     }
 
-    if (name && contactNumber && personalEmail && professionalEmail) {
+    if (
+      name &&
+      contactNumber &&
+      personalEmail &&
+      professionalEmail &&
+      category &&
+      category !== "Please select the Category of employee"
+    ) {
       axios
-        .post("http://localhost:5000/dashboard/employee", data, {
+        .post("http://localhost:8080/dashboard/employee", data, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         })
         .then((res) => {
           console.log(res);
-          toast.success(res.data.message);
+
+          if (res.status === 203) {
+            toast.warn(res.data.message);
+          }
+
           if (res.status === 200) {
+            toast.success(res.data.message);
             inputRef.current.checked = false;
             location.reload();
           }
@@ -130,6 +148,20 @@ const GlobalFilter = ({ filter, setFilter }) => {
             placeholder="alin.company@gmail.com"
           />
 
+          <label>Category</label>
+          <br />
+          <select
+            className="w-full outline-none rounded-md p-1 mb-4"
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option>Select employee Category</option>
+            <option>Human resources - (HR)</option>
+            <option>Business Development Executive - (BDE)</option>
+            <option>Developer</option>
+          </select>
+
+          <br />
+
           <label>Address</label>
           <input
             onChange={(e) => setAddress(e.target.value)}
@@ -159,4 +191,4 @@ const GlobalFilter = ({ filter, setFilter }) => {
     </div>
   );
 };
-export default GlobalFilter;
+export default EmployeeGlobalFilter;

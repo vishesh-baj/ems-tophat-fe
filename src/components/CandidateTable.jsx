@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTable, useSortBy, useGlobalFilter, useFilters } from "react-table";
 import { useMemo } from "react";
-import GlobalFilter from "./GlobalFilter";
+import CandidateGlobalFilter from "./CandidateGlobalFilter";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -243,7 +243,10 @@ const CandidateTable = () => {
   const inputRef = useRef();
   return (
     <div className="container">
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <CandidateGlobalFilter
+        filter={globalFilter}
+        setFilter={setGlobalFilter}
+      />
       <div className="h-[80vh] overflow-scroll rounded-xl">
         <table className="table w-full" {...getTableProps()}>
           <thead>
