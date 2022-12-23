@@ -66,8 +66,10 @@ const Sidebar = () => {
       {/* for mobile devices */}
       <div
         className={`${
+          // ! removed w-3/4 from sidebar as its breaking sidebar ui
+          // ! change w-3/4 => w-auto
           mobileSidebarToggle ? "translate-x-[-100%]" : "translate-x-[0%]"
-        } h-full bg-base-200 transition-all ease-in-out duration-200  fixed flex flex-col  md:hidden w-3/4 z-20`}
+        } h-full w-auto bg-base-200 transition-all ease-in-out duration-200  fixed flex flex-col  md:hidden z-20`}
       >
         <div className="w-full h-16 flex justify-between items-center px-2 bg-base-100">
           <span className="ml-2">Sidebar</span>
