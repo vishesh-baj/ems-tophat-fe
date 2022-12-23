@@ -3,11 +3,19 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [mobileSidebarToggle, setMobileSidebarToggle] = useState(false);
+  const [desktopSidebarToggle, setDesktopSidebarToggle] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
   return (
     <AppContext.Provider
-      value={{ isCollapsed, darkMode, setIsCollapsed, setDarkMode }}
+      value={{
+        mobileSidebarToggle,
+        darkMode,
+        desktopSidebarToggle,
+        setMobileSidebarToggle,
+        setDarkMode,
+        setDesktopSidebarToggle,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -11,7 +11,12 @@ import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../constants";
 
 const Navbar = () => {
-  const { isCollapsed, setIsCollapsed } = useContext(AppContext);
+  const {
+    mobileSidebarToggle,
+    setMobileSidebarToggle,
+    desktopSidebarToggle,
+    setDesktopSidebarToggle,
+  } = useContext(AppContext);
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useContext(AppContext);
 
@@ -30,21 +35,26 @@ const Navbar = () => {
     <div className="navbar flex justify-between mx-2">
       {/* for desktop */}
       <div className="hidden md:block">
-        {isCollapsed ? (
+        {desktopSidebarToggle ? (
           <TbLayoutSidebarRightCollapse
             className="cursor-pointer hidden md:block text-secondary hover:text-secondary-focus"
-            onClick={() => setIsCollapsed((prevState) => !isCollapsed)}
+            onClick={() =>
+              setDesktopSidebarToggle((prevState) => {
+                console.log(desktopSidebarToggle);
+                return !prevState;
+              })
+            }
             size={20}
           />
         ) : (
           <TbLayoutSidebarRightExpand
             className="cursor-pointer hidden md:block text-secondary hover:text-secondary-focus"
-            onClick={() => setIsCollapsed((prevState) => !isCollapsed)}
+            onClick={() => setDesktopSidebarToggle((prevState) => !prevState)}
             size={20}
           />
         )}
       </div>
-      <div className="flex gap-3 pr-9">
+      <div className="md:flex hidden gap-3 pr-9">
         {darkMode ? (
           <MdOutlineDarkMode
             className="text-primary hover:text-primary-focus cursor-pointer"
@@ -66,15 +76,16 @@ const Navbar = () => {
           />
         </div>
       </div>
+
       {/* for mobile */}
       <div className="flex justify-between md:hidden w-full">
         <RxHamburgerMenu
-          onClick={() => setIsCollapsed((prevState) => !prevState)}
+          onClick={() => setMobileSidebarToggle((prevState) => !prevState)}
           className="cursor-pointer block md:hidden"
           size={20}
         />
 
-        <div className="flex gap-2">
+        <div className="flex gap-5 mr-3">
           {darkMode ? (
             <MdOutlineDarkMode onClick={handleDarkMode} size={20} />
           ) : (
@@ -87,6 +98,10 @@ const Navbar = () => {
           />
         </div>
       </div>
+      {/* overlay */}
+      {!mobileSidebarToggle && (
+        <div className="transition-all ease-in-out duration-200 top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.5)] translate-x-0 fixed z-[2]"></div>
+      )}
     </div>
   );
 };

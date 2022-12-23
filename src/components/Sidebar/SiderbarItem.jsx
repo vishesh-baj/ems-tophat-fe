@@ -10,7 +10,7 @@ const SiderbarItem = ({
   collapseState,
   tooltip,
 }) => {
-  const { setIsCollapsed } = useContext(AppContext);
+  const { setMobileSidebarToggle } = useContext(AppContext);
   return (
     <>
       {collapseState ? (
@@ -28,10 +28,11 @@ const SiderbarItem = ({
       ) : (
         <NavLink
           to={path}
-          // TODO: should only change collapsed state in mobile device
-          // onClick={() =>
-          //   setIsCollapsed((prevState) => setIsCollapsed(!prevState))
-          // }
+          onClick={() =>
+            setMobileSidebarToggle((prevState) =>
+              setMobileSidebarToggle(!prevState)
+            )
+          }
           className={({ isActive }) =>
             isActive
               ? "transition-all btn btn-block flex justify-start btn-ghost gap-2 bg-primary"
