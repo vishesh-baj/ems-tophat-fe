@@ -13,7 +13,6 @@ import {
   BsPencil,
 } from "react-icons/bs";
 import swal from "sweetalert";
-import { useNavigate } from "react-router";
 
 const CandidateTable = () => {
   const col = [
@@ -386,14 +385,26 @@ const CandidateTable = () => {
             type="text"
           />
 
-          <label>Status</label>
+          {/* <label>Status</label>
           <input
             className="w-full outline-none rounded-md p-1 mb-3"
             placeholder="Completed Screening Round"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
             type="text"
-          />
+          /> */}
+          <label>Status</label>
+          <select
+            className="w-full outline-none rounded-md p-1 mb-3"
+            defaultValue={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option>Select Status </option>
+            <option>New</option>
+            <option>HR Round</option>
+            <option>First Round</option>
+            <option>Second Round</option>
+          </select>
 
           <label>Interviewer Name</label>
           <input
