@@ -17,7 +17,11 @@ const DashboardLayout = ({ children }) => {
   return (
     <div className="w-screen h-screen flex">
       <Sidebar />
-      <div className={` w-full ${isCollapsed ? `md:w-full` : `md:w-3/4`}`}>
+      <div
+        className={` w-full md:flex-1 ${
+          isCollapsed ? `md:w-full` : `md:w-3/4`
+        }`}
+      >
         <Navbar />
         {children}
       </div>

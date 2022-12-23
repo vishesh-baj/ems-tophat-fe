@@ -100,7 +100,10 @@ const Navbar = () => {
       </div>
       {/* overlay */}
       {!mobileSidebarToggle && (
-        <div className="transition-all ease-in-out duration-200 top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.5)] translate-x-0 fixed z-[2]"></div>
+        <div
+          onClick={() => setMobileSidebarToggle((prevState) => !prevState)}
+          className="md:hidden transition-all ease-in-out duration-200 top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.2)] translate-x-0 fixed z-[2]"
+        ></div>
       )}
     </div>
   );
