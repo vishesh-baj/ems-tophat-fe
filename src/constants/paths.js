@@ -2,13 +2,13 @@ const PATHS = {
   root: "/",
   login: "/login",
   register: "/register",
-  forgetPassword: "/forgetPassword",
+  pageNotFound: "/page-not-found",
   dashboardHome: "/dashboard/home",
+  forgetPassword: "/forgetPassword",
+  recordsList: "/dashboard/records-list",
+  dashboardRecordsList: "/dashboard/records-list",
   dashboardEmployeesList: "/dashboard/employees-list",
   dashboardCandidatesList: "/dashboard/candidates-list",
-  dashboardRecordsList: "/dashboard/records-list",
-  pageNotFound: "/page-not-found",
-  recordsList: "/dashboard/records-list",
 };
 
 export default PATHS;

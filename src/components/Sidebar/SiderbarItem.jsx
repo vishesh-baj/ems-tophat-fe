@@ -19,7 +19,7 @@ const SiderbarItem = ({
           data-tip={tooltip}
           className={({ isActive }) =>
             isActive
-              ? "transition-all btn flex justify-center btn-ghost gap-2 bg-gray-700 mx-4 tooltip tooltip-right"
+              ? "transition-all btn flex justify-center btn-ghost gap-2 bg-primary mx-4 tooltip tooltip-right"
               : "transition-all btn flex justify-center btn-ghost  gap-2 tooltip tooltip-right"
           }
         >
@@ -34,7 +34,7 @@ const SiderbarItem = ({
           // }
           className={({ isActive }) =>
             isActive
-              ? "transition-all btn btn-block flex justify-start btn-ghost gap-2 bg-gray-700"
+              ? "transition-all btn btn-block flex justify-start btn-ghost gap-2 bg-primary"
               : "transition-all btn btn-block flex justify-start btn-ghost gap-2"
           }
         >

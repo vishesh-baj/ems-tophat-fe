@@ -1,6 +1,7 @@
 import React from "react";
 import { DashboardLayout } from "../layout";
 import { Table } from "../components";
+
 const EmployeesPage = () => {
   return (
     <DashboardLayout>
