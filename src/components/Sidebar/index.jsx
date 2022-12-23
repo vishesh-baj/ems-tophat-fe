@@ -11,17 +11,21 @@ import {
 
 import { PATHS } from "../../constants/";
 const Sidebar = () => {
-  const { isCollapsed, setIsCollapsed } = useContext(AppContext);
+  const { mobileSidebarToggle, setMobileSidebarToggle, desktopSidebarToggle } =
+    useContext(AppContext);
+
   return (
     // for desktop
     <>
       <div
         className={`${
-          isCollapsed ? "w-[100px]" : "w-1/4"
+          desktopSidebarToggle ? "w-[100px]" : "w-1/4"
         } h-full bg-base-200 transition-all ease-in-out duration-200 hidden md:flex flex-col`}
       >
         <div className="w-full h-16 flex justify-between items-center px-2">
-          <span className="ml-2 text-red-500"> Tophat</span>
+          <span className="ml-2 text-red-500">
+            Top<span className="text-white">hat</span>
+          </span>
         </div>
         <div className="p-2">
           <SiderbarItem
@@ -29,7 +33,7 @@ const Sidebar = () => {
             iconSize={20}
             Icon={AiOutlineHome}
             title="Home"
-            collapseState={isCollapsed}
+            collapseState={desktopSidebarToggle}
             tooltip="Dashboard Home"
           />
           <SiderbarItem
@@ -37,7 +41,7 @@ const Sidebar = () => {
             iconSize={20}
             Icon={IoPeopleCircle}
             title="Employees"
-            collapseState={isCollapsed}
+            collapseState={desktopSidebarToggle}
             tooltip="Employees List"
           />
           <SiderbarItem
@@ -45,7 +49,7 @@ const Sidebar = () => {
             iconSize={20}
             Icon={AiOutlineUsergroupAdd}
             title="Candidates"
-            collapseState={isCollapsed}
+            collapseState={desktopSidebarToggle}
             tooltip="Candidates List"
           />
           <SiderbarItem
@@ -53,7 +57,7 @@ const Sidebar = () => {
             iconSize={20}
             Icon={AiOutlineCalendar}
             title="Records"
-            collapseState={isCollapsed}
+            collapseState={desktopSidebarToggle}
             tooltip="Records List"
           />
         </div>
@@ -62,14 +66,14 @@ const Sidebar = () => {
       {/* for mobile devices */}
       <div
         className={`${
-          isCollapsed ? "translate-x-[-100%]" : "translate-x-[0%]"
-        } h-full bg-base-200 transition-all ease-in-out duration-200  fixed flex flex-col  md:hidden w-3/4`}
+          mobileSidebarToggle ? "translate-x-[-100%]" : "translate-x-[0%]"
+        } h-full bg-base-200 transition-all ease-in-out duration-200  fixed flex flex-col  md:hidden w-3/4 z-20`}
       >
         <div className="w-full h-16 flex justify-between items-center px-2 bg-base-100">
-          <span className="ml-2"> Sidebar</span>
+          <span className="ml-2">Sidebar</span>
           <button className="btn btn-circle btn-ghost">
             <IoIosClose
-              onClick={() => setIsCollapsed((prevState) => !prevState)}
+              onClick={() => setMobileSidebarToggle((prevState) => !prevState)}
               size={20}
             />
           </button>

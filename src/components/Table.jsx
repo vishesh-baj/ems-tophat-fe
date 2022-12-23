@@ -260,7 +260,7 @@ const Table = () => {
 
   const inputRef = useRef();
   return (
-    <div className="container">
+    <div className="container z-10">
       <EmployeeGlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <div className="h-[80vh] overflow-scroll rounded-lg">
         <table className="table w-full" {...getTableProps()}>
