@@ -103,6 +103,7 @@ const Table = () => {
   const [alternativeContactNumber, setAlternativeContactNumber] = useState("");
   const [personalEmail, setPersonalEmail] = useState("");
   const [professionalEmail, setProfessionalEmail] = useState("");
+  const [category, setCategory] = useState("");
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
 
@@ -224,12 +225,17 @@ const Table = () => {
       return toast.warn("Professional Email field cannot be empty");
     }
 
+    if (!category) {
+      return toast.warn("Category field cannot be empty");
+    }
+
     const data = {
       name,
       contactNumber,
       alternativeContactNumber,
       personalEmail,
       professionalEmail,
+      category,
       address,
       password,
     };
@@ -243,19 +249,27 @@ const Table = () => {
       .then((res) => {
         getData();
         localStorage.removeItem("id");
+        if (res.status === 200) {
+          return toast.success(res.data.message);
+        }
+        if (res.status === 203) {
+          return toast.warn(res.data.message);
+        }
       });
-    console.log(data);
     inputRef.current.checked = false;
   }
 
   useEffect(() => {
-    setName(editableData.name);
-    setContactNumber(editableData.contactNumber);
-    setAlternativeContactNumber(editableData.alternativeContactNumber);
-    setPersonalEmail(editableData.personalEmail);
-    setProfessionalEmail(editableData.professionalEmail);
-    setAddress(editableData.address);
-    setPassword(editableData.password);
+    if (editableData.length !== 0) {
+      setName(editableData.name);
+      setContactNumber(editableData.contactNumber);
+      setAlternativeContactNumber(editableData.alternativeContactNumber);
+      setPersonalEmail(editableData.personalEmail);
+      setProfessionalEmail(editableData.professionalEmail);
+      setCategory(editableData.category);
+      setAddress(editableData.address);
+      setPassword(editableData.password);
+    }
   }, [editableData]);
 
   const inputRef = useRef();
@@ -390,6 +404,18 @@ const Table = () => {
             value={professionalEmail}
             onChange={(e) => setProfessionalEmail(e.target.value)}
           />
+
+          <label>Category</label>
+          <select
+            className="w-full outline-none rounded-md p-1 mb-3"
+            defaultValue={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option>Select employee Category</option>
+            <option>Human Resource - (HR)</option>
+            <option>Business Development Executive - (BDE)</option>
+            <option>Developer</option>
+          </select>
 
           <label>Address</label>
           <input
